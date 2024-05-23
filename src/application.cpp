@@ -12,19 +12,54 @@
 
 #include"Camera.h"
 
-
-
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 150.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -100.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+float deltatime = 0.0f,lasttime = 0.0f;
 
+float pitch = 0.0f;
+float yaw = 0.0f;
+bool firstMouse = true;
 
+float lastX = 400, lastY = 300;
+void static mouse_callback(GLFWwindow* window, double xpos, double ypos) {
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    GLfloat xoffset = xpos - lastX;
+    GLfloat yoffset = lastY - ypos;
+    lastX = xpos;
+    lastY = ypos;
+
+    GLfloat sensitivity = 0.05;
+    xoffset *= sensitivity;
+    yoffset *= sensitivity;
+
+    yaw += xoffset;
+    pitch += yoffset;
+
+    if (pitch > 89.0f)
+        pitch = 89.0f;
+    if (pitch < -89.0f)
+        pitch = -89.0f;
+
+    glm::vec3 front;
+    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+    front.y = sin(glm::radians(pitch));
+    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    cameraFront = glm::normalize(front);
+
+};
 void static key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
 
-    GLfloat cameraSpeed = 0.55f;
+    GLfloat cameraSpeed = 0.05f * deltatime * 1000.0f;
     if (key == GLFW_KEY_W)
         cameraPos += cameraSpeed * cameraFront;
     if (key == GLFW_KEY_S)
@@ -46,6 +81,8 @@ int main(void)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
     window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+
+    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     if (!window)
     {
         glfwTerminate();
@@ -144,6 +181,8 @@ int main(void)
         
         trans.SetProjection(glm::radians(45.0f), (float)width / (float)height, 0.1f, 500.0f);
 
+        
+
 
         while (!glfwWindowShouldClose(window))
         {
@@ -151,8 +190,9 @@ int main(void)
             glEnable(GL_DEPTH_TEST);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            trans.SetView(cameraPos, cameraPos + cameraFront, cameraUp);
 
+
+            float now = glfwGetTime();
             float time = (cos(glfwGetTime()) + 1.0) / 2;
             shader.SetUniform1f("T_color", time);
             
@@ -179,15 +219,19 @@ int main(void)
                     cubePositions[i] + glm::vec3(0.00, 0.0, -6.0));
                 //glm::mat4 view = glm::translate(glm::mat4(1.0f), cubePositions[i]+glm::vec3(0.00,0.0,-3.0));
                 //glm::mat4 model = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime() * 1.0f, glm::vec3(1.0f, 0.3f + 0.4f*i, 0.05f * i));
+
                 trans.update();
                 //shader.SetUniformmat4("u_MVP", u_MVP);
                 CheckGL(glDrawArrays(GL_TRIANGLES, 0, 36));
             }
             
-            
 
+            double nowtime = glfwGetTime();
+            deltatime = nowtime - lasttime; 
+            lasttime = nowtime;
             glfwSetKeyCallback(window, key_callback);
-
+            glfwSetCursorPosCallback(window, mouse_callback);
+            trans.SetView(cameraPos, cameraFront, cameraUp);
 
 
             glfwPollEvents();
