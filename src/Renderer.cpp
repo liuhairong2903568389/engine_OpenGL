@@ -3,7 +3,7 @@
 #include<fstream>
 #include<string>
 #include<iostream>
-#include"../stb_image/stb_image.h"
+#include"stb_image/stb_image.h"
 
 namespace my_engine{
 	VertexBuffer::VertexBuffer(const float* position,unsigned int size)
@@ -192,7 +192,7 @@ namespace my_engine{
 
 	int Shader::getuniformlocation(const std::string& valuename)
 	{
-		if (location_cache.find(valuename) != location_cache.end()) {
+		if (location_cache.find(valuename)!= location_cache.end()){
 			return location_cache[valuename];
 		}
 		else{

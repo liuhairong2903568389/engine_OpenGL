@@ -177,10 +177,9 @@ int main(void)
         texture1.bind(1);
         
         
-        my_engine::translational trans("u_MVP",&shader);
-        
-        trans.SetProjection(glm::radians(45.0f), (float)width / (float)height, 0.1f, 500.0f);
-
+        my_engine::model_trans trans("u_model",&shader);
+        my_engine::projection pro("u_pro", &shader);
+        my_engine::camera view("u_view", &shader);
         
 
 
@@ -189,49 +188,52 @@ int main(void)
             glfwSwapBuffers(window);
             glEnable(GL_DEPTH_TEST);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            glClearColor(0.2f, 0.5f, 0.8f, 1.0f);
+            glClear(GL_COLOR_BUFFER_BIT);
 
 
 
             float now = glfwGetTime();
             float time = (cos(glfwGetTime()) + 1.0) / 2;
             shader.SetUniform1f("T_color", time);
+
             
 
+            trans.SetRotate(now * 10.0f, glm::vec3(0.0f, 1.0f, 1.0f));
 
-            glClearColor(0.2f, 0.5f, 0.8f, 1.0f);
-            glClear(GL_COLOR_BUFFER_BIT);
+            CheckGL(glDrawArrays(GL_TRIANGLES, 0, 36));
 
-            glm::vec3 cubePositions[] = {
-                  glm::vec3(0.0f,  0.0f,  0.0f),
-                  glm::vec3(2.0f,  5.0f, -15.0f),
-                  glm::vec3(-1.5f, -2.2f, -2.5f),
-                  glm::vec3(-3.8f, -2.0f, -12.3f),
-                  glm::vec3(2.4f, -0.4f, -3.5f),
-                  glm::vec3(-1.7f,  3.0f, -7.5f),
-                  glm::vec3(1.3f, -2.0f, -2.5f),
-                  glm::vec3(1.5f,  2.0f, -2.5f),
-                  glm::vec3(1.5f,  0.2f, -1.5f),
-                  glm::vec3(-1.3f,  1.0f, -1.5f)
-            };
-            for (int i = 0; i < 10; i++) {
-                
-                trans.Set_transform(glm::vec3(1.0), (float)glfwGetTime() * 10.0f, glm::vec3(1.0f, 0.3f + 0.4f * i, 0.05f * i),
-                    cubePositions[i] + glm::vec3(0.00, 0.0, -6.0));
-                //glm::mat4 view = glm::translate(glm::mat4(1.0f), cubePositions[i]+glm::vec3(0.00,0.0,-3.0));
-                //glm::mat4 model = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime() * 1.0f, glm::vec3(1.0f, 0.3f + 0.4f*i, 0.05f * i));
+            //glm::vec3 cubePositions[] = {
+            //      glm::vec3(0.0f,  0.0f,  0.0f),
+            //      glm::vec3(2.0f,  5.0f, -15.0f),
+            //      glm::vec3(-1.5f, -2.2f, -2.5f),
+            //      glm::vec3(-3.8f, -2.0f, -12.3f),
+            //      glm::vec3(2.4f, -0.4f, -3.5f),
+            //      glm::vec3(-1.7f,  3.0f, -7.5f),
+            //      glm::vec3(1.3f, -2.0f, -2.5f),
+            //      glm::vec3(1.5f,  2.0f, -2.5f),
+            //      glm::vec3(1.5f,  0.2f, -1.5f),
+            //      glm::vec3(-1.3f,  1.0f, -1.5f)
+            //};
+            //for (int i = 0; i < 10; i++) {
+            //    
+            //    trans.Set_transform(glm::vec3(1.0), (float)glfwGetTime() * 10.0f, glm::vec3(1.0f, 0.3f + 0.4f * i, 0.05f * i),
+            //        cubePositions[i] + glm::vec3(0.00, 0.0, -6.0));
+            //    //glm::mat4 view = glm::translate(glm::mat4(1.0f), cubePositions[i]+glm::vec3(0.00,0.0,-3.0));
+            //    //glm::mat4 model = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime() * 1.0f, glm::vec3(1.0f, 0.3f + 0.4f*i, 0.05f * i));
 
-                trans.update();
-                //shader.SetUniformmat4("u_MVP", u_MVP);
-                CheckGL(glDrawArrays(GL_TRIANGLES, 0, 36));
-            }
+            //    trans.update();
+            //    //shader.SetUniformmat4("u_MVP", u_MVP);
+            //    CheckGL(glDrawArrays(GL_TRIANGLES, 0, 36));
+            //}
             
 
             double nowtime = glfwGetTime();
             deltatime = nowtime - lasttime; 
             lasttime = nowtime;
-            glfwSetKeyCallback(window, key_callback);
-            glfwSetCursorPosCallback(window, mouse_callback);
-            trans.SetView(cameraPos, cameraFront, cameraUp);
+            //glfwSetKeyCallback(window, key_callback);
+            //glfwSetCursorPosCallback(window, mouse_callback);
+            
 
 
             glfwPollEvents();
