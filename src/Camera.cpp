@@ -8,7 +8,7 @@ namespace my_engine
 		m_translate = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
 		m_rotate = glm::rotate(glm::mat4(1.0f), 0.0f, glm::vec3(0.0f, 0.0f, 1.0f));
 		m_scale = glm::scale(glm::mat4(1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
-		m_trans = m_translate * m_rotate * m_rotate;
+		m_trans = m_translate * m_rotate * m_scale;
 		m_program->SetUniformmat4(m_uname, m_trans);
 	}
 
@@ -21,28 +21,28 @@ namespace my_engine
 		SetTranslate(translate);
 		SetRotate(angle, rotate);
 		SetScale(scale);
-		m_trans = m_translate * m_rotate * m_rotate;
+		m_trans = m_translate * m_rotate * m_scale;
 		m_program->SetUniformmat4(m_uname, m_trans);
 	}
 
 	void model_trans::SetRotate(float angle, glm::vec3 rotate)
 	{
 		m_rotate = glm::rotate(glm::mat4(1.0f), glm::radians(angle), rotate);
-		m_trans = m_translate * m_rotate * m_rotate;
+		m_trans = m_translate * m_rotate * m_scale;
 		m_program->SetUniformmat4(m_uname, m_trans);
 	}
 
 	void model_trans::SetScale(glm::vec3 scale)
 	{
 		m_scale = glm::scale(glm::mat4(1.0f), scale);
-		m_trans = m_translate * m_rotate * m_rotate;
+		m_trans = m_translate * m_rotate * m_scale;
 		m_program->SetUniformmat4(m_uname, m_trans);
 	}
 
 	void model_trans::SetTranslate(glm::vec3 translate)
 	{
 		m_translate = glm::translate(glm::mat4(1.0f), translate);
-		m_trans = m_translate * m_rotate * m_rotate;
+		m_trans = m_translate * m_rotate * m_scale;
 		m_program->SetUniformmat4(m_uname, m_trans);
 	}
 

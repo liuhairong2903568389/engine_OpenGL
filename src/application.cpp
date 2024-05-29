@@ -101,47 +101,47 @@ int main(void)
 
     {
         float indices[] = {
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,  0.0f,  0.0f, -1.0f,
+         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,  0.0f,  0.0f, -1.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,  0.0f,  0.0f, -1.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,  0.0f,  0.0f, -1.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,  0.0f,  0.0f, -1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,  0.0f,  0.0f, -1.0f,
 
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,  0.0f,  0.0f,  1.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,  0.0f,  0.0f,  1.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,  0.0f,  0.0f,  1.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,  0.0f,  0.0f,  1.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,  0.0f,  0.0f,  1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,  0.0f,  0.0f,  1.0f,
 
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f, -1.0f,  0.0f,  0.0f,
+        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f, -1.0f,  0.0f,  0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, -1.0f,  0.0f,  0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, -1.0f,  0.0f,  0.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, -1.0f,  0.0f,  0.0f,
+        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f, -1.0f,  0.0f,  0.0f,
 
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  1.0f,  0.0f,  0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,  1.0f,  0.0f,  0.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,  1.0f,  0.0f,  0.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,  1.0f,  0.0f,  0.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, 0.0f,  1.0f,  0.0f,  0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  1.0f,  0.0f,  0.0f,
 
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,  0.0f, -1.0f,  0.0f,
+         0.5f, -0.5f, -0.5f,  1.0f, 1.0f,  0.0f, -1.0f,  0.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,  0.0f, -1.0f,  0.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,  0.0f, -1.0f,  0.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,  0.0f, -1.0f,  0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,  0.0f, -1.0f,  0.0f,
 
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,  0.0f,  1.0f,  0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,  0.0f,  1.0f,  0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  0.0f,  1.0f,  0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,  0.0f,  1.0f,  0.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,  0.0f,  1.0f,  0.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,  0.0f,  1.0f,  0.0f
         };
         unsigned int index[] = {
             0,1,2,
@@ -163,6 +163,7 @@ int main(void)
         my_engine::IndexBuffer ib(index, sizeof(index));
         va.layout_push<float>(3);
         va.layout_push<float>(2);
+        va.layout_push<float>(3);
         va.addLayout();
 
         my_engine::Shader shader("res/shader/basic.shader");
@@ -171,6 +172,11 @@ int main(void)
         CheckGL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
         CheckGL(glEnable(GL_BLEND));
 
+        shader.unbind();
+        my_engine::Shader lightShader("res/shader/lighting.shader");
+        lightShader.unbind();
+
+        shader.bind();
         shader.SetUniform1i("mytexture1", 0);
         shader.SetUniform1i("mytexture2", 1);
         texture0.bind();
@@ -181,17 +187,18 @@ int main(void)
         my_engine::projection pro("u_pro", &shader);
         my_engine::camera view("u_view", &shader);
         
-
+        my_engine::model_trans trans2("u_model", &lightShader);
+        
 
         while (!glfwWindowShouldClose(window))
         {
             glfwSwapBuffers(window);
             glEnable(GL_DEPTH_TEST);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            glClearColor(0.2f, 0.5f, 0.8f, 1.0f);
+            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
-
+            shader.bind();
 
             float now = glfwGetTime();
             float time = (cos(glfwGetTime()) + 1.0) / 2;
@@ -199,35 +206,31 @@ int main(void)
 
             
 
-            trans.SetRotate(now * 10.0f, glm::vec3(0.0f, 1.0f, 1.0f));
-
-            CheckGL(glDrawArrays(GL_TRIANGLES, 0, 36));
-
-            //glm::vec3 cubePositions[] = {
-            //      glm::vec3(0.0f,  0.0f,  0.0f),
-            //      glm::vec3(2.0f,  5.0f, -15.0f),
-            //      glm::vec3(-1.5f, -2.2f, -2.5f),
-            //      glm::vec3(-3.8f, -2.0f, -12.3f),
-            //      glm::vec3(2.4f, -0.4f, -3.5f),
-            //      glm::vec3(-1.7f,  3.0f, -7.5f),
-            //      glm::vec3(1.3f, -2.0f, -2.5f),
-            //      glm::vec3(1.5f,  2.0f, -2.5f),
-            //      glm::vec3(1.5f,  0.2f, -1.5f),
-            //      glm::vec3(-1.3f,  1.0f, -1.5f)
-            //};
-            //for (int i = 0; i < 10; i++) {
-            //    
-            //    trans.Set_transform(glm::vec3(1.0), (float)glfwGetTime() * 10.0f, glm::vec3(1.0f, 0.3f + 0.4f * i, 0.05f * i),
-            //        cubePositions[i] + glm::vec3(0.00, 0.0, -6.0));
-            //    //glm::mat4 view = glm::translate(glm::mat4(1.0f), cubePositions[i]+glm::vec3(0.00,0.0,-3.0));
-            //    //glm::mat4 model = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime() * 1.0f, glm::vec3(1.0f, 0.3f + 0.4f*i, 0.05f * i));
-
-            //    trans.update();
-            //    //shader.SetUniformmat4("u_MVP", u_MVP);
-            //    CheckGL(glDrawArrays(GL_TRIANGLES, 0, 36));
-            //}
+            glm::vec3 lightpos = { 0.5f,1.0f,-0.3f };
             
+            
+            {
+                trans.SetTranslate(glm::vec3(0.0f,-0.3f,0.6f));
+                trans.SetScale(glm::vec3(1.0f, 1.0f, 1.0f));
+                trans.SetRotate(now * 10.0f, glm::vec3(0.0f, 1.0f, 1.0f));
+                CheckGL(glDrawArrays(GL_TRIANGLES, 0, 36));
 
+                glm::vec3 lightcol(1.0f);
+                glm::vec3 CameraPos(0.0f);
+                shader.SetUniform3f("LightCol", lightcol);
+                shader.SetUniform3f("LightPos", lightpos);
+                shader.SetUniform3f("ViewPos", CameraPos);
+                shader.unbind();
+            }
+            {
+                lightShader.bind();
+                trans2.SetTranslate(lightpos);
+                trans2.SetRotate(90.0, glm::vec3(0.0, 1.0, 1.0));
+                trans2.SetScale(glm::vec3(0.1f, 0.1f, 0.1f));
+                CheckGL(glDrawArrays(GL_TRIANGLES, 0, 36));
+                lightShader.unbind();
+            }
+            
             double nowtime = glfwGetTime();
             deltatime = nowtime - lasttime; 
             lasttime = nowtime;

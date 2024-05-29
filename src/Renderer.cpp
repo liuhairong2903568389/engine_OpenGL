@@ -190,6 +190,11 @@ namespace my_engine{
 		CheckGL(glUniformMatrix4fv(getuniformlocation(valuename),1,GL_FALSE,&value[0][0]));
 	}
 
+	void Shader::SetUniform3f(const std::string& valuename, glm::vec3 value)
+	{
+		CheckGL(glUniform3f(getuniformlocation(valuename), value.x, value.y, value.z));
+	}
+
 	int Shader::getuniformlocation(const std::string& valuename)
 	{
 		if (location_cache.find(valuename)!= location_cache.end()){

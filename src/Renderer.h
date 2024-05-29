@@ -86,6 +86,7 @@ namespace my_engine {
 		void SetUniform1f(const std::string&,float);
 		void SetUniform1i(const std::string&, int);
 		void SetUniformmat4(const std::string&, glm::mat4);
+		void SetUniform3f(const std::string&, glm::vec3);
 
 	private:
 		unsigned int Vs_Id,Fs_Id,Program_Id;
